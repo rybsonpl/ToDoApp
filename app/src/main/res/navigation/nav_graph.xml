@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listFragment">
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="pl.rybson.todoapp.ui.list.ListFragment"
+        android:label="@string/to_do_list"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addUpdateFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_listFragment_to_settingsBottomSheetFragment"
+            app:destination="@id/settingsBottomSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdateFragment"
+        android:name="pl.rybson.todoapp.ui.add_update.AddUpdateFragment"
+        tools:layout="@layout/fragment_add_update" >
+        <argument
+            android:name="task"
+            app:argType="pl.rybson.todoapp.data.models.TaskModel"
+            app:nullable="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/settingsBottomSheetFragment"
+        android:name="pl.rybson.todoapp.ui.list.SettingsBottomSheetFragmentListener"
+        android:label="fragment_modal_bottom_sheet_settings"
+        tools:layout="@layout/fragment_modal_bottom_sheet_settings" />
+</navigation>
